@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events API Documentation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 800px;
+        margin: auto;
+        background: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+      h1,
+      h2 {
+        color: #333;
+      }
+      .route {
+        margin: 20px 0;
+      }
+      .method {
+        font-weight: bold;
+        color: #fff;
+        background: #007bff;
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+      .method.get {
+        background: #28a745;
+      }
+      .method.post {
+        background: #17a2b8;
+      }
+      .method.put {
+        background: #ffc107;
+      }
+      .method.delete {
+        background: #dc3545;
+      }
+      code {
+        background: #f1f1f1;
+        padding: 2px 4px;
+        border-radius: 4px;
+        color: #d63384;
+      }
+      pre {
+        background: #f8f9fa;
+        padding: 10px;
+        border-radius: 4px;
+        overflow: auto;
+        border: 1px solid #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Events API Documentation</h1>
+      <p>
+        Welcome to the API documentation for the Events Management System. Below
+        you'll find details on how to use each endpoint.
+      </p>
+
+      <div class="route">
+        <h2><span class="method get">GET</span> /</h2>
+        <p>Returns a welcome message.</p>
+        <pre><code>curl -X GET http://localhost:3000/</code></pre>
+      </div>
+
+      <div class="route">
+        <h2><span class="method post">POST</span> /events</h2>
+        <p>Creates a new event.</p>
+        <p><strong>Request Body:</strong></p>
+        <pre><code>{
+    "parent_id": 1,
+    "company_id": 2,
+    "event_name": "Product Launch",
+    "label_color": "green",
+    "location": "Main Hall",
+    "description": "Launch of the new product line.",
+    "start_date_time": "2024-07-12T12:30:00.000Z",
+    "end_date_time": "2024-07-12T14:30:00.000Z",
+    "host": "Emily Davis",
+    "status": "confirmed",
+    "note": "Invite media personnel.",
+    "repeat": 0,
+    "send_reminder": 1,
+    "remind_time": "17:30:00",
+    "remind_type": "sms",
+    "event_link": "http://example.com/event3",
+    "added_by": 2,
+    "last_updated_by": 2,
+    "event_id": "EVT12347"
+}</code></pre>
+        <pre><code>curl -X POST http://localhost:3000/events -H "Content-Type: application/json" -d '{ "parent_id": 1, "company_id": 2, "event_name": "Product Launch", "label_color": "green", "location": "Main Hall", "description": "Launch of the new product line.", "start_date_time": "2024-07-12T12:30:00.000Z", "end_date_time": "2024-07-12T14:30:00.000Z", "host": "Emily Davis", "status": "confirmed", "note": "Invite media personnel.", "repeat": 0, "send_reminder": 1, "remind_time": "17:30:00", "remind_type": "sms", "event_link": "http://example.com/event3", "added_by": 2, "last_updated_by": 2, "event_id": "EVT12347" }'</code></pre>
+      </div>
+
+      <div class="route">
+        <h2><span class="method get">GET</span> /events</h2>
+        <p>Fetches all events.</p>
+        <pre><code>curl -X GET http://localhost:3000/events</code></pre>
+      </div>
+
+      <div class="route">
+        <h2><span class="method get">GET</span> /events/:id</h2>
+        <p>Fetches a specific event by ID.</p>
+        <pre><code>curl -X GET http://localhost:3000/events/3</code></pre>
+      </div>
+
+      <div class="route">
+        <h2><span class="method put">PUT</span> /events/:id</h2>
+        <p>Updates an existing event by ID.</p>
+        <p><strong>Request Body:</strong></p>
+        <pre><code>{
+    "event_name": "Updated Product Launch"
+}</code></pre>
+        <pre><code>curl -X PUT http://localhost:3000/events/3 -H "Content-Type: application/json" -d '{ "event_name": "Updated Product Launch" }'</code></pre>
+      </div>
+
+      <div class="route">
+        <h2><span class="method delete">DELETE</span> /events/:id</h2>
+        <p>Deletes an event by ID.</p>
+        <pre><code>curl -X DELETE http://localhost:3000/events/3</code></pre>
+      </div>
+    </div>
+  </body>
+</html>
