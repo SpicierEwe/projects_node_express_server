@@ -1,6 +1,6 @@
 const pool = require("../config/database");
 
-module.exports = async function deleteEvent(id) {
+module.exports = async function deleteEmployee(id) {
   try {
     const [rows, fields] = await pool.query("DELETE FROM events WHERE id = ?", [
       id,

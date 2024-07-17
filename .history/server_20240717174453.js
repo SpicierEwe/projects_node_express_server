@@ -21,11 +21,11 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "./api_documentation/documentation.html"));
 });
 
-app.use("/employees", createEmployeeRouter);
-app.use("/employees", getAllEmployeesRouter);
-app.use("/employees", getEmployeeByIdRouter);
-app.use("/employees", updateEmployeeRouter);
-app.use("/employees", deleteEmployeeRouter);
+app.use("/Employees", createEmployeeRouter);
+app.use("/Employees", getAllEmployeesRouter);
+app.use("/Employees", getEmployeeByIdRouter);
+app.use("/Employees", updateEmployeeRouter);
+app.use("/Employees", deleteEmployeeRouter);
 
 // Start server
 app.listen(port, () => {

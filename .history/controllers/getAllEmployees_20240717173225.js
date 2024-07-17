@@ -1,7 +1,7 @@
 const pool = require("../config/database");
 
 // Read all events
-module.exports = async function getAllEvents() {
+module.exports = async function getAllEmployees() {
   try {
     const [rows, fields] = await pool.query("SELECT * FROM events");
     return rows;

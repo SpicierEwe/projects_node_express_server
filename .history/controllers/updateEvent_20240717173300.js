@@ -1,6 +1,7 @@
 const pool = require("../config/database");
 
-module.exports = async function createEvent(eventData) {
+// Update an event
+module.exports = async function updateEmployee(id, eventData) {
   const {
     parent_id,
     company_id,
@@ -21,14 +22,13 @@ module.exports = async function createEvent(eventData) {
     remind_time,
     remind_type,
     event_link,
-    added_by,
     last_updated_by,
     event_id,
   } = eventData;
 
   try {
     const [rows, fields] = await pool.query(
-      "INSERT INTO events (parent_id, company_id, event_name, label_color, location, description, start_date_time, end_date_time, host, status, note, `repeat`, repeat_every, repeat_cycles, repeat_type, send_reminder, remind_time, remind_type, event_link, added_by, last_updated_by, event_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      "UPDATE events SET parent_id=?, company_id=?, event_name=?, label_color=?, location=?, description=?, start_date_time=?, end_date_time=?, host=?, status=?, note=?, `repeat`=?, repeat_every=?, repeat_cycles=?, repeat_type=?, send_reminder=?, remind_time=?, remind_type=?, event_link=?, last_updated_by=?, event_id=?, updated_at=NOW() WHERE id=?",
       [
         parent_id,
         company_id,
@@ -49,15 +49,15 @@ module.exports = async function createEvent(eventData) {
         remind_time,
         remind_type,
         event_link,
-        added_by,
         last_updated_by,
         event_id,
+        id,
       ]
     );
 
-    return rows.insertId; // Return the ID of the newly inserted event
+    return rows.affectedRows > 0; // Return true if update was successful
   } catch (error) {
-    console.error("Error creating event:", error);
+    console.error(`Error updating event with ID ${id}:`, error);
     throw error;
   }
 };

@@ -1,7 +1,7 @@
 const pool = require("../config/database");
 
 // Update an event
-module.exports = async function updateEvent(id, eventData) {
+module.exports = async function updateEmployee(id, eventData) {
   const {
     parent_id,
     company_id,
