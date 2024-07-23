@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projects API Documentation</title>
+    <title>Tasks API Documentation</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -62,10 +62,10 @@
   </head>
   <body>
     <div class="container">
-      <h1>Projects API Documentation</h1>
+      <h1>Tasks API Documentation</h1>
       <p>
-        Welcome to the API documentation for the Projects Management System.
-        Below you'll find details on how to use each endpoint.
+        Welcome to the API documentation for the Tasks Management System. Below
+        you'll find details on how to use each endpoint.
       </p>
 
       <div class="route">
@@ -75,74 +75,77 @@
       </div>
 
       <div class="route">
-        <h2><span class="method post">POST</span> /projects</h2>
-        <p>Creates a new project.</p>
+        <h2><span class="method post">POST</span> /tasks</h2>
+        <p>Creates a new task.</p>
         <p><strong>Request Body:</strong></p>
         <pre><code>{
-    "title": "Project Title",
+    "title": "Task Title",
     "milestone": "Milestone Name",
     "priority": "High",
-    "status": "Pending",
+    "task_status": "Pending",
     "assign_users": [1, 2],
-    "description": "Project Description",
+    "description": "Task Description",
     "more_information": "Additional Information",
     "options": "Options Data",
+    "project_id": 1,
     "createdAt": "2024-07-01 08:00:00",
     "updatedAt": "2024-07-01 08:00:00"
 }</code></pre>
-        <pre><code>curl -X POST http://localhost:3000/projects -H "Content-Type: application/json" -d '{ "title": "Project Title", "milestone": "Milestone Name", "priority": "High", "status": "Pending", "assign_users": [1, 2], "description": "Project Description", "more_information": "Additional Information", "options": "Options Data", "createdAt": "2024-07-01 08:00:00", "updatedAt": "2024-07-01 08:00:00" }'</code></pre>
+        <pre><code>curl -X POST http://localhost:3000/tasks -H "Content-Type: application/json" -d '{ "title": "Task Title", "milestone": "Milestone Name", "priority": "High", "task_status": "Pending", "assign_users": [1, 2], "description": "Task Description", "more_information": "Additional Information", "options": "Options Data", "project_id": 1, "createdAt": "2024-07-01 08:00:00", "updatedAt": "2024-07-01 08:00:00" }'</code></pre>
       </div>
 
       <div class="route">
-        <h2><span class="method get">GET</span> /projects</h2>
-        <p>Fetches all projects.</p>
-        <pre><code>curl -X GET http://localhost:3000/projects</code></pre>
+        <h2><span class="method get">GET</span> /tasks</h2>
+        <p>Fetches all tasks.</p>
+        <pre><code>curl -X GET http://localhost:3000/tasks</code></pre>
       </div>
 
       <div class="route">
-        <h2><span class="method get">GET</span> /projects/:id</h2>
-        <p>Fetches a specific project by ID.</p>
-        <pre><code>curl -X GET http://localhost:3000/projects/3</code></pre>
+        <h2><span class="method get">GET</span> /tasks/:id</h2>
+        <p>Fetches a specific task by ID.</p>
+        <pre><code>curl -X GET http://localhost:3000/tasks/3</code></pre>
       </div>
 
       <div class="route">
-        <h2><span class="method put">PUT</span> /projects/:id</h2>
-        <p>Updates an existing project by ID.</p>
+        <h2><span class="method put">PUT</span> /tasks/:id</h2>
+        <p>Updates an existing task by ID.</p>
         <p><strong>Request Body:</strong></p>
         <pre><code>{
-    "title": "Updated Project Title",
+    "title": "Updated Task Title",
     "milestone": "Updated Milestone Name",
     "priority": "Medium",
-    "status": "In Progress",
+    "task_status": "In Progress",
     "assign_users": [1, 3],
-    "description": "Updated Project Description",
+    "description": "Updated Task Description",
     "more_information": "Updated Additional Information",
     "options": "Updated Options Data",
+    "project_id": 2,
     "createdAt": "2024-07-01 08:00:00",
     "updatedAt": "2024-07-02 08:00:00"
 }</code></pre>
-        <pre><code>curl -X PUT http://localhost:3000/projects/3 -H "Content-Type: application/json" -d '{ "title": "Updated Project Title", "milestone": "Updated Milestone Name", "priority": "Medium", "status": "In Progress", "assign_users": [1, 3], "description": "Updated Project Description", "more_information": "Updated Additional Information", "options": "Updated Options Data", "createdAt": "2024-07-01 08:00:00", "updatedAt": "2024-07-02 08:00:00" }'</code></pre>
+        <pre><code>curl -X PUT http://localhost:3000/tasks/3 -H "Content-Type: application/json" -d '{ "title": "Updated Task Title", "milestone": "Updated Milestone Name", "priority": "Medium", "task_status": "In Progress", "assign_users": [1, 3], "description": "Updated Task Description", "more_information": "Updated Additional Information", "options": "Updated Options Data", "project_id": 2, "createdAt": "2024-07-01 08:00:00", "updatedAt": "2024-07-02 08:00:00" }'</code></pre>
       </div>
 
       <div class="route">
-        <h2><span class="method delete">DELETE</span> /projects/:id</h2>
-        <p>Deletes a project by ID.</p>
-        <pre><code>curl -X DELETE http://localhost:3000/projects/3</code></pre>
+        <h2><span class="method delete">DELETE</span> /tasks/:id</h2>
+        <p>Deletes a task by ID.</p>
+        <pre><code>curl -X DELETE http://localhost:3000/tasks/3</code></pre>
       </div>
 
       <div class="route">
         <h2>Database Schema</h2>
-        <p>The table structure for the <code>projects</code> table:</p>
-        <pre><code>CREATE TABLE projects (
+        <p>The table structure for the <code>tasks</code> table:</p>
+        <pre><code>CREATE TABLE tasks (
   id INT AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(255),
   milestone VARCHAR(255),
   priority VARCHAR(50),
-  status VARCHAR(50),
+  task_status VARCHAR(50),
   assign_users JSON,
   description TEXT,
   more_information TEXT,
   options TEXT,
+  project_id INT,
   createdAt DATETIME,
   updatedAt DATETIME
 );

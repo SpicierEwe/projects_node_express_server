@@ -11,21 +11,21 @@ app.use(express.json());
 
 // Import route files
 const createProjectRouter = require("./routes/create_project_route");
-const getAllProjectsRouter = require("./routes/get_all_projects_route");
-const getProjectByIdRouter = require("./routes/get_project_by_id_route");
-const updateProjectRouter = require("./routes/update_project_route");
-const deleteProjectRouter = require("./routes/delete_project_route");
+const getAllprojectsRouter = require("./routes/get_all_projects_route");
+const getprojectByIdRouter = require("./routes/get_project_by_id_route");
+const updateprojectRouter = require("./routes/update_project_route");
+const deleteprojectRouter = require("./routes/delete_project_route");
 
 // Home route
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "./api_documentation/documentation.html"));
 });
 
-app.use("/projects", createProjectRouter);
-app.use("/projects", getAllProjectsRouter);
-app.use("/projects", getProjectByIdRouter);
-app.use("/projects", updateProjectRouter);
-app.use("/projects", deleteProjectRouter);
+app.use("/projects", createprojectRouter);
+app.use("/projects", getAllprojectsRouter);
+app.use("/projects", getprojectByIdRouter);
+app.use("/projects", updateprojectRouter);
+app.use("/projects", deleteprojectRouter);
 
 // Start server
 app.listen(port, () => {

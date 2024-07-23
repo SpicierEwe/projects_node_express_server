@@ -1,7 +1,7 @@
 const pool = require("../config/database");
 
 // Update an employee
-module.exports = async function updateEmployee(id, employeeData) {
+module.exports = async function updateTask(id, taskData) {
   const {
     company_id,
     user_id,
@@ -24,7 +24,7 @@ module.exports = async function updateEmployee(id, employeeData) {
     updated_at,
     work_from_type,
     overwrite_attendance,
-  } = employeeData;
+  } = taskData;
 
   try {
     const [rows, fields] = await pool.query(
